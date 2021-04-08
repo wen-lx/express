@@ -1,14 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var cors = require('cors')
-var app = express()
-app.use(cors())
 
 // 引入数据库配置文件
 const db = require('./database')
 
 // 获取数据库中的user表数据
-app.get('/', (err, res) => {
+router.get('/', (err, res) => {
   const sql = 'SELECT * FROM user';
   db.query(sql, (err, result) => {
       if(err){
@@ -24,7 +21,7 @@ app.get('/', (err, res) => {
 }) 
 
 // 获取数据库中的user表数据
-app.get('/class', (err, res) => {
+router.get('/class', (err, res) => {
   const sql = 'SELECT * FROM class';
   db.query(sql, (err, result) => {
       if(err){
@@ -38,4 +35,4 @@ app.get('/class', (err, res) => {
   }); 
 }) 
 
-module.exports = app;
+module.exports = router;

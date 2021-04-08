@@ -2,11 +2,6 @@ var express = require('express');
 var router = express.Router();
 const mysql=require("mysql")
 
-var cors = require('cors')
-var app = express()
-app.use(cors())
-
-
 var db = mysql.createConnection({
   host: "119.45.12.238",
   port: "3307",
@@ -36,8 +31,8 @@ db.query("SELECT * FROM user",function(err,data){
 // })
 // db.destroy()
 /* GET home page. */
-app.get('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 })
 
-module.exports = app;
+module.exports = router;
